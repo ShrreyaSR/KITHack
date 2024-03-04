@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <title>User Details</title>
+  <style>
+  body{
+    border: 0;
+  }
+  .container{
+    display: flex;
+    background-color: white;
+  }
+  .logo{
+    width: 50px;
+    height: 50px;
+    position:relative;
+    top: 20px;
+    left: 25px;
+  }
+  .heading{
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size:30px;
+    text-align:center;
+    margin: 0;
+  }
+  .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+  }
+  .detailsView{
+    margin-top:25px;
+  }
+  .detailHead{
+    color:#8C8C8C;
+    font-family: "Outfit", sans-serif;
+    font-size:17px;
+    margin:10px 0 5px 25px;
+  }
+  .detail{
+    font-size:18px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    margin:0 0 20px 25px;
+  }
+  .emergencyButton{
+    background-color:#F02A2A;
+    padding: 20px 10px;
+    width: 80%;
+    border-radius: 5px;
+    margin:20px 40px;
+    color: white;
+    font-family:"Outfit", sans-serif ;
+    font-size: 20px;
+    text-align: center;
+    border: 0;
+  }
+  .desc{
+    font-size:12px;
+    font-family:"Outfit", sans-serif ;
+    color: #8C8C8C;
+    text-align:center;
+    margin:0 25px;
+  }
+  /* horizontalRule: {
+    borderBottomColor: '#D9D9D9',
+    borderBottomWidth: 1,
+    marginVertical: 15, // Adjust the margin as needed
+  },
+  discription:{
+    fontSize:12,
+    color: '#8C8C8C',
+    textAlign:'center',
+    margin:25 
+  }*/
+
+  
+  </style>
+</head>
+<body>
+  <div id="user-details">
+
+    
+  </div>
+
+
+  <script>
+    // Extract user details from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    const phone = urlParams.get('phone');
+    const gender = urlParams.get('gender');
+    const dob = urlParams.get('dob');
+    const blood = urlParams.get('blood');
+    const tel = urlParams.get('emergency')
+
+    function handleEmergency() {
+      // Redirect to dial pad with the emergency number in URL
+      window.location.href = `tel:${tel}`;
+    }
+
+
+    // Display user details
+    const userDetailsDiv = document.getElementById('user-details');
+    userDetailsDiv.innerHTML = `
+      </div class="container">
+      <img class="logo" src="logo.png" alt="">
+      <br><br>
+      <p class="heading">${name}</p>
+      <div class="icon">
+        <img src="pic.png" alt="">
+      </div>
+      <div class ="detailsView">
+        <p class="detailHead"> Phone</p>
+        <p class="detail">${phone}</p>
+        <hr>
+        <p class="detailHead"> Gender</p>
+        <p class="detail">${gender}</p>
+        <hr>
+        <p class="detailHead">Date of Birth</p>
+        <p class="detail">${dob}</p>
+        <hr>
+        <p class="detailHead">Blood Group</p>
+        <p class="detail">${blood}</p>
+        <hr>
+      <div>
+      <button class="emergencyButton" onclick="handleEmergency()">Emergency</button>
+      <p class="desc">
+      This will trigger an emergency call to the persons emergency contacts. Any false triggers will lead to legal actions.
+      </p>
+      
+    `;
+  </script>
+</body>
+</html>
+
+<!-- <h2>User Details</h2>
+<p><strong>Name:</strong> ${name}</p>
+<p><strong>Age:</strong> ${age}</p>
+<p><strong>DOB:</strong> ${decodeURIComponent(details)}</p>
+<p><strong>Details:</strong> ${decodeURIComponent(details)}</p> -->
